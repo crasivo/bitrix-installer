@@ -2,11 +2,12 @@
 
 ## Supported Versions
 
-Only the latest version of the installer is supported for security updates.
+Only the latest major version of the installer is supported for security updates.
 
 | Version | Supported |
 |---------|-----------|
-| < 1.0.x | Yes       |
+| 1.x     | Yes       |
+| < 1.0.0 | No        |
 
 ## Reporting a Vulnerability
 
