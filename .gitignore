@@ -1,0 +1,26 @@
+# Composer
+/vendor/
+/composer.lock
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# IDEs and Editors
+/.idea/
+/.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# CMS installation files (downloaded dynamically)
+/bitrixsetup.php
+/index.php
+/restore.php
+/restore.php.debug
+
+# CMS directories (generated during/after installation)
+/bitrix/
+/upload/
+/local/

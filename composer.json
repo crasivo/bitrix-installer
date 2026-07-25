@@ -1,0 +1,44 @@
+{
+  "name": "crasivo/bitrix-installer",
+  "description": "Автоматизированный скрипт развертывания 1С-Битрикс в архитектуре с директорией public",
+  "type": "project",
+  "license": "MIT",
+  "version": "0.0.1",
+  "authors": [
+    {
+      "name": "Crasivo Dev",
+      "email": "crasivodev@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=8.2",
+    "ext-curl": "*",
+    "ext-gd": "*",
+    "ext-json": "*",
+    "ext-mbstring": "*",
+    "ext-mysqli": "*",
+    "ext-openssl": "*",
+    "ext-simplexml": "*",
+    "ext-zip": "*",
+    "ext-zlib": "*"
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "sort-packages": true,
+    "allow-plugins": {
+      "composer/package-versions-deprecated": true
+    }
+  },
+  "scripts": {
+    "bx-download-scripts": [
+      "@php -r \"copy('https://www.1c-bitrix.ru/download/files/scripts/bitrixsetup.php', 'index.php');\"",
+      "@php -r \"copy('https://www.1c-bitrix.ru/download/files/scripts/restore.php', 'restore.php');\"",
+      "@php -r \"touch('restore.php.debug');\""
+    ],
+    "post-create-project-cmd": [
+      "@bx-download-scripts"
+    ]
+  }
+}
