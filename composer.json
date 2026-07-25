@@ -3,7 +3,6 @@
   "description": "Lightweight Composer project template to quickly prepare a 1C-Bitrix environment with public directory isolation.",
   "type": "project",
   "license": "MIT",
-  "version": "1.0.0",
   "authors": [
     {
       "name": "Crasivo Dev",
@@ -32,14 +31,11 @@
     }
   },
   "scripts": {
-    "bx-download-scripts": [
-      "@php -r \"file_exists('public') || mkdir('public', 0755);\"",
-      "@php -r \"copy('https://www.1c-bitrix.ru/download/files/scripts/bitrixsetup.php', 'public/index.php');\"",
-      "@php -r \"copy('https://www.1c-bitrix.ru/download/files/scripts/restore.php', 'public/restore.php');\"",
-      "@php -r \"touch('public/restore.php.debug');\""
+    "bx-install": [
+      "@php installer.php"
     ],
     "post-create-project-cmd": [
-      "@bx-download-scripts"
+      "@bx-install"
     ]
   }
 }
