@@ -1,0 +1,38 @@
+# IDE & Editors
+/.idea/
+/.vscode/
+
+# AI
+/.aider*
+/.chroma/
+/.claude/
+/.continue/
+/.cursor/
+/.gemini/
+/.qwen/
+/.windsurf/
+*.chat_history
+*.context
+
+# Environment configurations and Secrets
+.env
+.env.*
+!.env.example
+
+# OS files
+.DS_Store
+.DS_Store?
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# Logs
+*.log
+
+# Composer
+/vendor/
+/composer.lock
+/composer.sha*
+
+# Public
+/public

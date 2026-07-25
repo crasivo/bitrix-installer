@@ -1,0 +1,22 @@
+name: Sync with Packagist
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - '*'
+
+permissions:
+  contents: read
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Packagist Sync
+        run: |
+          curl -X POST "https://packagist.org/api/update-package?username=${{ secrets.PACKAGIST_USERNAME }}&apiToken=${{ secrets.PACKAGIST_API_TOKEN }}" \
+               -H "Content-Type: application/json" \
+               -H "User-Agent: GitHubActions-PackagistSync/1.0 (mailto:crasivodev@gmail.com)" \
+               -d '{"repository": {"url": "https://github.com/${{ github.repository }}"}}'
