@@ -5,13 +5,10 @@
  * Downloads the official installation scripts and sets up the public/ folder.
  */
 
-$bitrixsetupUrl = 'https://www.1c-bitrix.ru/download/files/scripts/bitrixsetup.php';
-$restoreUrl = 'https://www.1c-bitrix.ru/download/files/scripts/restore.php';
-
+$bxSetupUrl = 'https://www.1c-bitrix.ru/download/files/scripts/bitrixsetup.php';
+$bxServerTestUrl = 'https://www.1c-bitrix.ru/download/files/scripts/bitrix_server_test.php';
+$bxRestoreUrl = 'https://www.1c-bitrix.ru/download/files/scripts/restore.php';
 $publicDir = __DIR__ . '/public';
-$indexDest = $publicDir . '/index.php';
-$restoreDest = $publicDir . '/restore.php';
-$debugDest = $publicDir . '/restore.php.debug';
 
 echo "=== Starting 1C-Bitrix setup ===\n";
 
@@ -50,23 +47,15 @@ if (!file_exists($publicDir)) {
     }
 }
 
-// Download bitrixsetup.php as index.php
-if (!download_file($bitrixsetupUrl, $indexDest)) {
-    exit(1);
-}
+// Download *.php scripts
+download_file($bxSetupUrl, $publicDir . pathinfo($bxSetupUrl, \PATHINFO_FILENAME)) || exit(1);
+download_file($bxRestoreUrl, pathinfo($bxRestoreUrl, \PATHINFO_FILENAME)) || exit(1);
+download_file($bxServerTestUrl, pathinfo($bxServerTestUrl, \PATHINFO_FILENAME)) || exit(1);
+file_put_contents($publicDir . '/index.php', '<?php phpinfo(); ?>');
 
-// Download restore.php
-if (!download_file($restoreUrl, $restoreDest)) {
-    exit(1);
-}
-
-// Create empty restore.php.debug
-echo "Creating empty restore.php.debug...\n";
-if (touch($debugDest)) {
-    echo "Created debug file successfully.\n";
-} else {
-    echo "Warning: Failed to create debug file.\n";
-}
+// Create empty *.debug files
+touch($publicDir . '/bitrixsetup.debug');
+touch($publicDir . '/restore.debug');
 
 // Self-destruction of the setup script
 echo "Cleaning up installer script...\n";
