@@ -39,4 +39,5 @@ goal is to prepare CMS installations using standard Composer commands.
   running copy or touch commands.
 - Keep PHP requirements strictly checked (e.g. extension check in `composer.json`).
 - Ensure any added installer scripts or downloaders handle network errors or invalid download payloads gracefully.
+- The script `installer/download.php` must be written in strict compliance with PHP v5.6 compatibility (avoid using modern features such as typed properties, union types, or PHP 7+ helper functions) to ensure it can run on legacy server configurations.
 - Do not create arbitrary helper directories in the root unless they are part of the standard template.
