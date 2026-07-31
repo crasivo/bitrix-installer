@@ -13,7 +13,8 @@ $publicDir = __DIR__ . '/public';
 echo "=== Starting 1C-Bitrix setup ===\n";
 
 // Helper for downloading files securely via curl
-function download_file($url, $dest) {
+function download_file($url, $publicDir) {
+    $dest = $publicDir . '/' . pathinfo($url, \PATHINFO_BASENAME);
     echo "Downloading: $url -> $dest\n";
     $ch = curl_init($url);
     $fp = fopen($dest, 'wb');
@@ -48,9 +49,9 @@ if (!file_exists($publicDir)) {
 }
 
 // Download *.php scripts
-download_file($bxSetupUrl, $publicDir . pathinfo($bxSetupUrl, \PATHINFO_FILENAME)) || exit(1);
-download_file($bxRestoreUrl, pathinfo($bxRestoreUrl, \PATHINFO_FILENAME)) || exit(1);
-download_file($bxServerTestUrl, pathinfo($bxServerTestUrl, \PATHINFO_FILENAME)) || exit(1);
+download_file($bxSetupUrl, $publicDir) || exit(1);
+download_file($bxRestoreUrl, $publicDir) || exit(1);
+download_file($bxServerTestUrl, $publicDir) || exit(1);
 
 // Create additional *.php scripts
 file_put_contents($publicDir . '/index.php', '<?php header("Location: bitrixsetup.php"); ?>');
