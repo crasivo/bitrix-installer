@@ -29,6 +29,9 @@ desktop.ini
 # Logs
 *.log
 
+# Docker
+/.docker
+
 # Composer
 /vendor/
 /composer.lock
