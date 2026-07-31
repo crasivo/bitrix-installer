@@ -51,7 +51,10 @@ if (!file_exists($publicDir)) {
 download_file($bxSetupUrl, $publicDir . pathinfo($bxSetupUrl, \PATHINFO_FILENAME)) || exit(1);
 download_file($bxRestoreUrl, pathinfo($bxRestoreUrl, \PATHINFO_FILENAME)) || exit(1);
 download_file($bxServerTestUrl, pathinfo($bxServerTestUrl, \PATHINFO_FILENAME)) || exit(1);
-file_put_contents($publicDir . '/index.php', '<?php phpinfo(); ?>');
+
+// Create additional *.php scripts
+file_put_contents($publicDir . '/index.php', '<?php header("Location: bitrixsetup.php"); ?>');
+file_put_contents($publicDir . '/phpinfo.php', '<?php phpinfo(); ?>');
 
 // Create empty *.debug files
 touch($publicDir . '/bitrixsetup.debug');
