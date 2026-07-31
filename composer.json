@@ -32,7 +32,10 @@
   },
   "scripts": {
     "bx-install": [
-      "@php installer.php"
+      "@php -r 'file_exists(\"public\") || mkdir(\"public\", 0755);'",
+      "@php -r 'file_exists(\"public/download.php\") || copy(\"installer/download.php\", \"public/download.php\");'",
+      "@php -r 'file_exists(\"public/index.html\") || copy(\"installer/index.html\", \"public/index.html\");'",
+      "@php 'public/download.php'"
     ],
     "post-create-project-cmd": [
       "@bx-install"
