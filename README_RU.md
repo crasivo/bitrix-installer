@@ -1,4 +1,4 @@
-# 🚀 Bitrix Project Installer
+<center><img src=".github/poster.png" alt="Bitrix Installer"/></center>
 
 [![License](https://img.shields.io/github/license/crasivo/bitrix-installer?style=flat-square)](LICENSE)
 [![PHP Version](https://img.shields.io/badge/php-%3E%3D8.2-blue?style=flat-square)](composer.json)
@@ -28,7 +28,7 @@
 
 ---
 
-## ⚡ Быстрый старт
+## 🚀 Быстрый старт
 
 Для создания нового проекта на Битриксе выполните стандартную команду Composer:
 
